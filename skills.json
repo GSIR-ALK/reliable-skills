@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "name": "Reliable Skills",
+    "description": "精选可靠技能清单，方便新 Agent 一键安装所有已验证的技能",
+    "version": "1.0.0",
+    "maintainer": "GSIR-ALK"
+  },
+  "categories": {
+    "creative": {
+      "name": "创意 & 内容生成",
+      "skills": [
+        {
+          "name": "excalidraw",
+          "github": "https://github.com/excalidraw/excalidraw",
+          "description": "手绘风格白板/架构图/流程图工具",
+          "reason": "画系统架构图、流程图、时序图，输出 JSON 格式可二次编辑，比 PlantUML 更直观。适合做方案演示和文档配图",
+          "install_type": "git_clone",
+          "hermes_builtin": false
+        },
+        {
+          "name": "p5js",
+          "github": "https://p5js.org/",
+          "description": "生成艺术/交互式可视化/3D 场景 JavaScript 库",
+          "reason": "做交互式数据可视化、粒子特效、数学动画，单个 HTML 即可运行，无需构建工具",
+          "install_type": "cdn_or_npm",
+          "hermes_builtin": false
+        }
+      ]
+    },
+    "development": {
+      "name": "开发 & 代码",
+      "skills": [
+        {
+          "name": "writing-plans",
+          "github": "",
+          "description": "出方案 → 确认 → 执行的完整工作流",
+          "reason": "任何涉及'先想清楚再做'的场景。自动产出方案文档，分步执行，避免跳过计划直接写代码",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "test-driven-development",
+          "github": "",
+          "description": "RED-GREEN-REFACTOR 三阶段 TDD 流程",
+          "reason": "需要确保代码质量时使用，先写测试再写实现，减少回归 bug",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "systematic-debugging",
+          "github": "",
+          "description": "4 阶段根因调试法：理解→诊断→修复→验证",
+          "reason": "遇到难复现或复杂的 bug 时使用，防止'修好了但不知道为什么好'",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "github-pr-workflow",
+          "github": "",
+          "description": "GitHub PR 全生命周期管理",
+          "reason": "从分支创建到合并的完整流程，配合 code review 使用",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "github-code-review",
+          "github": "",
+          "description": "PR 差异审查 + 内联评论",
+          "reason": "需要审查他人代码或自审时使用，安全性检查 + 代码质量门禁",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "subagent-driven-development",
+          "github": "",
+          "description": "子代理执行 + 双阶段审查",
+          "reason": "大型功能拆解，子代理并行开发不同模块，统一审查合并",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        }
+      ]
+    },
+    "product": {
+      "name": "产品 & 商业",
+      "skills": [
+        {
+          "name": "product-validation",
+          "github": "",
+          "description": "从市场信号→竞品分析→技术方案→盈利模式→路线图的全链路验证",
+          "reason": "想做一个新项目但不确定值不值得做时使用，30 分钟到 2 小时出结论",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "validate-idea",
+          "github": "",
+          "description": "轻量级想法验证：痛点/市场/技术/盈利 4 维度判断",
+          "reason": "比 product-validation 更轻量，15 分钟判断一个点子是否靠谱",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "app-inception",
+          "github": "",
+          "description": "从原始想法经市场验证→合规检查→产品定位→进入构建流程",
+          "reason": "适合'我有一个 App 想法但不知道从哪开始'的场景",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "free-apis",
+          "github": "",
+          "description": "1564 条免费 API 索引 + 已测试可用的列表",
+          "reason": "做原型或 MVP 时不想花钱买 API，用这个找免费替代品",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        }
+      ]
+    },
+    "learning": {
+      "name": "学习 & 知识",
+      "skills": [
+        {
+          "name": "cyber-learning",
+          "github": "",
+          "description": "苏格拉底式 Web 安全引导教学，14 节课覆盖核心漏洞",
+          "reason": "零基础学网安，不直接给答案，通过提问引导自己推导出结论。每节课配乌云实战案例复盘",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "guided-learning",
+          "github": "",
+          "description": "通用苏格拉底引导学习法",
+          "reason": "当用户问'这题怎么做'时，不直接给答案，通过追问帮用户自己发现答案",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "src-bugbounty-kb",
+          "github": "",
+          "description": "SRC 漏洞挖掘知识库（乌云案例 + PayloadsAllTheThings）",
+          "reason": "学完网安基础后实战用，查阅真实漏洞案例和 Payload 库",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        }
+      ]
+    },
+    "devops": {
+      "name": "运维 & 部署",
+      "skills": [
+        {
+          "name": "server-admin",
+          "github": "",
+          "description": "阿里云 Linux 服务器运维手册",
+          "reason": "记录服务器配置、防火墙、Nginx、MySQL 状态、进程管理等，新人接手服务器不用重新摸索",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        },
+        {
+          "name": "qq-official-bot",
+          "github": "",
+          "description": "QQ 官方机器人 WebSocket/WebHook 接入",
+          "reason": "对接 QQ 频道的标准流程，包含密钥交换、WebSocket 生命周期、Ed25519 签名验证、Nginx 反代配置",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        }
+      ]
+    },
+    "ai": {
+      "name": "AI 模型 & 推理",
+      "skills": [
+        {
+          "name": "llama-cpp",
+          "github": "https://github.com/ggml-org/llama.cpp",
+          "description": "本地运行 GGUF 格式 LLM 的 C++ 推理引擎",
+          "reason": "服务器无 GPU 也能跑小模型（如 Qwen2.5-1.5B），完全离线，零 API 成本",
+          "install_type": "git_clone",
+          "hermes_builtin": false
+        },
+        {
+          "name": "dashscope-image-generation",
+          "github": "",
+          "description": "通义万相 API 图像生成",
+          "reason": "阿里云免费的 AI 画图接口，生成头像、封面、插图等，无需 GPU 服务器",
+          "install_type": "pip",
+          "hermes_builtin": true
+        },
+        {
+          "name": "vllm",
+          "github": "https://github.com/vllm-project/vllm",
+          "description": "高吞吐 LLM 推理框架",
+          "reason": "有 GPU 时的首选推理引擎，支持 PagedAttention 和连续批处理",
+          "install_type": "pip",
+          "hermes_builtin": false
+        },
+        {
+          "name": "obliteratus",
+          "github": "",
+          "description": "LLM 拒绝回答消融（diff-in-means 方法）",
+          "reason": "需要模型不拒绝某些合理问题时使用，操作简单但威力大",
+          "install_type": "hermes_builtin",
+          "hermes_builtin": true
+        }
+      ]
+    }
+  }
+}
