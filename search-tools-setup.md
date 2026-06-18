@@ -1,10 +1,51 @@
 # 服务器搜索工具配置经验
 
-在服务器上配置了两套搜索工具：**Tavily**（MCP 搜索服务）和 **Firecrawl**（CLI 抓取/搜索工具）。互补使用。
+在服务器上配置了三套搜索工具：**AnySearch**（MCP 搜索服务，主查询引擎）、**Tavily**（MCP 搜索服务）和 **Firecrawl**（CLI 抓取/搜索工具）。互补使用。
 
 ---
 
-## 1. Tavily MCP
+## 0. 总览
+
+AnySearch 是目前的主搜索引擎，会话中会通过 MCP 工具直接使用。Tavily 和 Firecrawl 是备选和补充。
+
+---
+
+## 1. AnySearch MCP（主搜索引擎）
+
+AnySearch 是目前 Hermes 配置的主搜索引擎，作为 MCP 服务器集成。
+
+### 配置
+
+在 `~/.hermes/config.yaml` 的 `mcp_servers` 中：
+
+```yaml
+mcp_servers:
+  anysearch:
+    url: https://api.anysearch.com/mcp
+    headers:
+      Authorization: Bearer as_sk_xxx...
+    timeout: 30
+```
+
+### 提供的工具
+
+| 工具 | 功能 |
+|------|------|
+| `mcp_anysearch_search` | 主搜索（支持垂直领域路由：finance/academic/business/health/legal 等+通用搜索） |
+| `mcp_anysearch_batch_search` | 批量搜索（最多5条并行） |
+| `mcp_anysearch_get_sub_domains` | 获取垂直搜索子领域 |
+| `mcp_anysearch_extract` | 提取网页完整内容 |
+
+### 使用模式
+
+- 通用查询直接调用 `search`
+- 多意图/多领域查询用 `batch_search` 并行发送
+- 垂直搜索需要先 `get_sub_domains` 获取子领域，再搜索
+- 查询结果不够时用 `extract` 获取全文
+
+---
+
+## 2. Tavily MCP（备选搜索）
 
 ### 安装
 
@@ -49,7 +90,7 @@ TAVILY_API_KEY=tvly-xxx...
 
 ---
 
-## 2. Firecrawl CLI
+## 3. Firecrawl CLI（CLI 工具）
 
 ### 安装
 
@@ -86,19 +127,22 @@ firecrawl search "keywords" > output.md
 
 ---
 
-## 3. 两者分工
+## 4. 三者分工
 
 | 场景 | 用哪个 |
 |------|--------|
-| 会话中需要搜索/提取数据 | Tavily MCP（工具集成到会话） |
+| 会话中搜索/提取数据（主） | AnySearch MCP（默认搜索工具集） |
+| 会话中搜索/提取数据（备） | Tavily MCP |
 | 需要文件输出/精确控制 | Firecrawl CLI（终端命令） |
-| 需要爬取整个网站 | 两者都可以，Tavily 更方便 |
+| 需要爬取整个网站 | Tavily / Firecrawl |
 | 需要交互操作页面（点击、填表） | Firecrawl（interact 功能） |
+| 垂直领域查询（金融/学术/法律等） | AnySearch（内置垂直搜索） |
 
 ---
 
 ## 注意事项
 
 - **不公开敏感信息**：API Key 只放 `.env`，不进 Git/公开文档
-- **中国服务器限制**：Tavily 在中国可用；Firecrawl 的 `search` 命令在中国可用，无需额外配置
+- **中国服务器限制**：Tavily 和 AnySearch 在中国服务器上均可正常使用；Firecrawl 的搜索功能在中国也有良好表现
 - 修改 config.yaml 后需要 `/reload-mcp` 或重启 Hermes 才能生效
+- AnySearch 的 API Key 前缀通常为 `as_sk_`，Tavily 为 `tvly-`，Firecrawl 为 `fc-`
