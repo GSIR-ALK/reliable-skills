@@ -5,5 +5,17 @@
     "version": "0.1.0",
     "maintainer": "GSIR-ALK"
   },
-  "categories": {}
+  "categories": {
+    "搜索工具": {
+      "description": "服务器搜索/抓取相关工具配置经验",
+      "items": [
+        {
+          "name": "search-tools-setup",
+          "file": "search-tools-setup.md",
+          "description": "Tavily MCP + Firecrawl CLI 搜索工具安装与配置",
+          "tags": ["tavily", "firecrawl", "search", "mcp", "cli"]
+        }
+      ]
+    }
+  }
 }
